@@ -5,5 +5,11 @@ node {
         } else {
             echo 'I execute elsewhere'
         }
+     
+
+        // Run the maven build
+        sh "mvn clean verify"
+
+        
     }
 }
