@@ -6,6 +6,7 @@ node {
             echo 'I execute elsewhere'
         }
      
+        git url: 'https://github.com/manuelMachuca/mi-api-rest'
 
         withMaven(
         // Maven installation declared in the Jenkins "Global Tool Configuration"
