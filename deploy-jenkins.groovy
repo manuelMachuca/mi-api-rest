@@ -6,7 +6,7 @@ node {
             echo 'I execute elsewhere'
         }
      
-	    def mvnHome = "/opt/apache/maven/3.6.1" 
+	    def mvnHome = "/opt/apache/maven/3.8.4" 
 		steps.sh "'${mvnHome}/bin/mvn' compile test-compile"
         
     }
