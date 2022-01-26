@@ -21,10 +21,13 @@ node {
         ) {
 
         // Run the maven build
-        sh "ls"
         sh "mvn clean verify"
 
         } // withMaven will discover the generated Maven artifacts, JUnit Surefire & FailSafe & FindBugs & SpotBugs reports...
             
     }
+    stage('Run') {
+       java -cp target/mi-api-rest-1.0-SNAPSHOT.jar com.manuel.app.App 
+    }
+    
 }
