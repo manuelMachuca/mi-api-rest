@@ -29,5 +29,15 @@ node {
     stage('Run') {
        sh "java -cp target/mi-api-rest-1.0-SNAPSHOT.jar com.manuel.app.App"
     }
+    stage('Scan Veracode') {
+       //enviar compiplado.jar a Veracode
+       //...
+       echo 'Enviado a Veracode'
+    }
+    stage('Sonarqube') {
+       //enviar compiplado.jar a Sonarqube
+       //...
+       echo 'Enviado a Sonar'
+    }
     
 }
