@@ -17,7 +17,7 @@ node {
         // We recommend to define Maven settings.xml globally at the folder level using
         // navigating to the folder configuration in the section "Pipeline Maven Configuration / Override global Maven configuration"
         // or globally to the entire master navigating to  "Manage Jenkins / Global Tools Configuration"
-        mavenSettingsConfig: 'my-maven-settings' // (3)
+        mavenSettingsConfig: '9ca6c49f-7398-46f3-b85b-d10bb70958a2' // (3)
         ) {
 
         // Run the maven build
