@@ -34,10 +34,10 @@ node {
        //...
        echo 'Enviado a Veracode'
     }
-    stage('Sonarqube') {
-       //enviar compiplado.jar a Sonarqube
-       //...
-       echo 'Enviado a Sonar'
+    stage('SonarQube analysis') {
+        withSonarQubeEnv('My SonarQube Server') {
+            sh 'mvn clean package sonar:sonar'
+        } // submitted SonarQube taskId is automatically attached to the pipeline context
     }
     
 }
