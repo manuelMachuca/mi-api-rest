@@ -50,7 +50,7 @@ node {
 
         // Run the maven build
         //sh "mvn clean verify"
-            withSonarQubeEnv(installationName: 'SonarServer') { // You can override the credential to be used
+            withSonarQubeEnv(credentialsId: 'sonar_credential', installationName: 'SonarServer') { // You can override the credential to be used
                 sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar'
             }
         } // withMaven will discover the generated Maven artifacts, JUnit Surefire & FailSafe & FindBugs & SpotBugs reports...
