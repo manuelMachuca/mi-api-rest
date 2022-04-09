@@ -35,9 +35,26 @@ node {
        echo 'Enviado a Veracode'
     }
     stage('SonarQube analysis') {
-        withSonarQubeEnv(installationName: 'SonarServer') { // You can override the credential to be used
-        sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar'
-        }
+        
+        withMaven(
+        // Maven installation declared in the Jenkins "Global Tool Configuration"
+        maven: 'maven-3', // (1)
+        // Use `$WORKSPACE/.repository` for local repository folder to avoid shared repositories
+        mavenLocalRepo: '.repository', // (2)
+        // Maven settings.xml file defined with the Jenkins Config File Provider Plugin
+        // We recommend to define Maven settings.xml globally at the folder level using
+        // navigating to the folder configuration in the section "Pipeline Maven Configuration / Override global Maven configuration"
+        // or globally to the entire master navigating to  "Manage Jenkins / Global Tools Configuration"
+        mavenSettingsConfig: '9ca6c49f-7398-46f3-b85b-d10bb70958a2' // (3)
+        ) {
+
+        // Run the maven build
+        //sh "mvn clean verify"
+            withSonarQubeEnv(installationName: 'SonarServer') { // You can override the credential to be used
+                sh 'mvn org.sonarsource.scanner.maven:sonar-maven-plugin:3.7.0.1746:sonar'
+            }
+        } // withMaven will discover the generated Maven artifacts, JUnit Surefire & FailSafe & FindBugs & SpotBugs reports...
+        
     }
     
 }
